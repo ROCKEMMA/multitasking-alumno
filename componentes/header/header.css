@@ -1,0 +1,81 @@
+#header{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-bottom: 1px solid black;
+
+    display: grid;
+    grid-template-columns: 4% 12% 1fr 20% 15%;
+
+    align-items: center;
+}
+
+.icono_header{
+    grid-column: 1;
+    text-align: right;
+    padding-right: 5px;
+    
+}
+.title{
+    padding-left: 2px;
+    font-weight: 800;
+    font-family: cursive;
+}
+.search{
+    grid-row: 1;
+    grid-column: 4;
+    text-align: center;
+}
+.input_search{
+    height: 1.2rem;
+    width: 90%;
+    background-color: rgba(232, 230, 230, 0.183);
+
+    border-radius: 5rem;
+    border-color: rgb(157, 154, 154);
+}
+.contenedor_icon_header{
+    grid-column: 5;
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr );
+}
+.addtask{
+    border: 2px solid black;
+    border-radius: 100%;
+    margin-top: 2px;
+}
+
+.icon1{
+    align-items: center;
+    text-align: center;
+}
+.icon2{
+    text-align: center;
+}
+
+@media (max-width: 376px) {
+    #root, .main{
+        width: 375px ;
+        height: auto;
+    }
+
+    #header{
+    grid-template-columns: auto;
+        
+    }
+
+    .input_search{
+        width: 9rem;
+    }
+}
+@media (min-width:376px) and (max-width: 480px) {
+    .title{
+        padding-left: 10px;
+    }
+    #header{
+        grid-template-columns: auto;
+    }
+    .addtask{
+        margin-top:2px ;
+    }
+}
