@@ -10,7 +10,8 @@ Una página de multitasking permite al usuario realizar múltiples tareas simult
 # Problema o Proposito 
 almacena las tareas que tienen los usuarios, con un horario mas organizado
 
-# Publico: Esta pagina es para todos los publicos pero esta orientada mas a estudiantes
+# Publico: 
+Esta pagina es para todos los publicos pero esta orientada mas a estudiantes
 
 # Caracteristicas:
 index.html
