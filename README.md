@@ -44,12 +44,21 @@ Para colaborar en este proyecto puedes con un fork
 
 # Pasos
 Crear un Fork
+
 Clonar el repositorio
+
 Crear una nueva rama
+
 Tipo de programación: Colaborativa y Modular
+
 Realizar cambios en la rama
+
 Hacer un Commit
+
 Push de la rama al fork
+
 Abrir un Pull Request (PR)
+
 Revisión y aprobación del PR   
+
 Mantener el fork actualizado
