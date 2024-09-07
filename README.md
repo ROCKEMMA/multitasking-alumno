@@ -1,7 +1,10 @@
-# multitasking-David
-Autor: David Aceituno Balconi
-Colegio Santa Catalina Laboure
-GitPage https://rockemma.github.io/multitasking-david/
+|multitasking-David|
+|-------------------------------|
+|Autor: David Aceituno Balconi |
+|Colegio Santa Catalina Laboure |
+|GitPage https://rockemma.github.io/multitasking-david/ |
+
+
 
 
 # Proyecto
@@ -15,24 +18,43 @@ Esta pagina es para todos los publicos pero esta orientada mas estudiantes
 
 # Caracteristicas:
 index.html
+
 config.css
+
 main.js
+
 componentes/
+
 header/
+
 Header.js
+
 Header.css
+
 footer/
+
 Footer.js
+
 Footer.css
+
 componente/
+
 itemTarea
+
 ItemTarea.js
+
 ItemTarea.css
+
 formularioTare
+
 FormularioTarea.js
+
 FormularioTarea.css
+
 data/
+
 DbTareas.js
+
 DbUsuario.js
 
 # Instalacion y Forma de uso 
