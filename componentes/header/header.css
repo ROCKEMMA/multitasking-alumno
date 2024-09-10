@@ -29,10 +29,15 @@
 .input_search{
     height: 1.2rem;
     width: 90%;
-    background-color: rgba(232, 230, 230, 0.183);
+    background-color: rgba(232, 230, 230, 0.491);
 
+    padding-left: 5px;
+    
     border-radius: 5rem;
     border-color: rgb(157, 154, 154);
+
+    font-family: cursive;
+    align-content: center;
 }
 .contenedor_icon_header{
     grid-column: 5;
@@ -48,6 +53,14 @@
 .icon1{
     align-items: center;
     text-align: center;
+}
+.icon1 :hover{
+    transition: 2ms;
+    zoom: 1.2;
+}
+.icon2 :hover{
+    transition: 2ms;
+    zoom: 1.2;
 }
 .icon2{
     text-align: center;

@@ -1,7 +1,10 @@
-# multitasking-David
-Autor: David Aceituno Balconi
-Colegio Santa Catalina Laboure
-GitPage https://rockemma.github.io/multitasking-david/
+|multitasking-David|
+|-------------------------------|
+|Autor: David Aceituno Balconi |
+|Colegio Santa Catalina Laboure |
+|GitPage https://rockemma.github.io/multitasking-david/ |
+
+
 
 
 # Proyecto
@@ -15,24 +18,43 @@ Esta pagina es para todos los publicos pero esta orientada mas estudiantes
 
 # Caracteristicas:
 index.html
+
 config.css
+
 main.js
+
 componentes/
+
 header/
+
 Header.js
+
 Header.css
+
 footer/
+
 Footer.js
+
 Footer.css
+
 componente/
+
 itemTarea
+
 ItemTarea.js
+
 ItemTarea.css
+
 formularioTare
+
 FormularioTarea.js
+
 FormularioTarea.css
+
 data/
+
 DbTareas.js
+
 DbUsuario.js
 
 # Instalacion y Forma de uso 
@@ -66,4 +88,5 @@ Mantener el fork actualizado
 # Esquema 
 link de excalidraw: https://excalidraw.com/#json=XIBe2WIx5Uo7vUiWwqwuE,lnfCPDIcpdG9mSclbXEuQQ
 
-![image](https://github.com/user-attachments/assets/9e0d13f7-73fe-488b-a560-41f8f14bb26c)
+![image](https://github.com/user-attachments/assets/9a19d12b-7535-4ced-86ca-9dbee7f6a09a)
+
