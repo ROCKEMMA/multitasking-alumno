@@ -67,3 +67,4 @@ Mantener el fork actualizado
 link de excalidraw: https://excalidraw.com/#json=XIBe2WIx5Uo7vUiWwqwuE,lnfCPDIcpdG9mSclbXEuQQ
 
 ![image](https://github.com/user-attachments/assets/9a19d12b-7535-4ced-86ca-9dbee7f6a09a)
+
