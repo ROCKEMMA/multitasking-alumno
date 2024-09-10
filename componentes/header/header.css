@@ -1,4 +1,4 @@
-#header{
+.header{
     width: 100%;
     height: auto;
     background-color: white;
@@ -72,7 +72,7 @@
         height: auto;
     }
 
-    #header{
+    .header{
     grid-template-columns: auto;
         
     }
@@ -85,7 +85,7 @@
     .title{
         padding-left: 10px;
     }
-    #header{
+    .header{
         grid-template-columns: auto;
     }
     .addtask{
