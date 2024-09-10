@@ -1,4 +1,4 @@
-import { header } from "../componentes/header/header.js";
+import { header } from "./componentes/header/header.js";
 let DOM=document.querySelector('#root')
 DOM.innerHTML=`
  <div id="main">
