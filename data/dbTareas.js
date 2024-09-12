@@ -40,4 +40,4 @@ const tareas = [
       estado: "incompleto"
     }
   ];
-  
+  export{tareas}
