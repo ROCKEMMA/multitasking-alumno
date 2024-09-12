@@ -1,7 +1,7 @@
 .contenedorTareas{
 
     height: 100%;
-
+    font-family: cursive;
     padding-top: 2rem;
     padding-bottom: 2rem;
 
@@ -32,7 +32,7 @@
     border-top: 1px solid black;
 }
 .estado{
-    width: 8rem;
+    width: 7.8rem;
     margin-left: 5rem;
     border-radius: 5rem;
     background-color: rgb(10, 249, 154);
