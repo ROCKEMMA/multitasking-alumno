@@ -1,0 +1,99 @@
+.contenedorTareas{
+
+    height: 100%;
+    font-family: cursive;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.itemTarea{
+    width: auto;
+    height: 3rem;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    align-content: center;
+    text-align: center;
+    align-items: center;
+
+    border-bottom: 1px solid black;
+}
+
+.contenedorTareas div:hover{
+    zoom: 1.1;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.301);
+}
+.contenedorTareas > div:first-child{
+    border-top: 1px solid black;
+}
+.estado{
+    width: 7.8rem;
+    margin-left: 5rem;
+    border-radius: 5rem;
+    background-color: rgb(10, 249, 154);
+
+}
+
+@media (max-width: 376px) {
+    .estado{
+        width: auto;
+        height: 2rem;
+
+        margin: 0%;
+        align-content: center;
+    }
+    .Usuario{
+        padding-left: 1rem;
+        text-align: center;        
+        width: 4rem;
+    }
+    .fecha{
+        width: 5rem;
+    }
+    .contenedorTareas :hover{
+        zoom: none;
+    }
+    .contenedorTareas h3{
+        font-size: 0.7rem;
+    }
+    .contenedorTareas p {
+        font-size: 0.6rem;
+    }
+    *{
+        max-width: 375px;
+    }
+}
+@media  (min-width: 376px )and (max-width: 480px) {
+    .estado{
+        width: auto;
+        height: 2rem;
+
+        margin: 0%;
+        align-content: center;
+    }
+    .Usuario{
+        padding-left: 1rem;
+        text-align: center;        
+        width: 4rem;
+    }
+    .fecha{
+        width: 5rem;
+    }
+    .contenedorTareas :hover{
+        zoom: none;
+    }
+    .contenedorTareas h3{
+        font-size: 0.8rem;
+    }
+    .contenedorTareas p {
+        font-size: 0.7rem;
+    }
+    *{
+        max-width: 480px;
+    }
+}
