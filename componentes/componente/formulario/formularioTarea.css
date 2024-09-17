@@ -1,0 +1,17 @@
+.background{
+    background-color: rgba(0, 0, 0, 0.356);
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    
+}
+.formulario{
+    background-color: rgb(241, 241, 241);
+    
+    margin: auto;
+    margin-top: 5%;
+
+    width: 25rem;
+    height: 30rem;
+}
