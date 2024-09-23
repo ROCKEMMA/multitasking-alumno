@@ -68,7 +68,7 @@
         max-width: 375px;
     }
 }
-@media  (min-width: 376px )and (max-width: 480px) {
+@media  (min-width: 376px )and (max-width: 500px) {
     .estado{
         width: auto;
         height: 2rem;
@@ -95,5 +95,32 @@
     }
     *{
         max-width: 480px;
+    }
+}
+@media  (min-width: 501px )and (max-width: 900px) {
+    .estado{
+        width: auto;
+        height: 2rem;
+
+        margin: 0%;
+        align-content: center;
+    }
+    .Usuario{
+        text-align: center;        
+    }
+    .fecha{
+        width: auto;
+    }
+    .contenedorTareas :hover{
+        zoom: none;
+    }
+    .contenedorTareas h3{
+        font-size: 0.8rem;
+    }
+    .contenedorTareas p {
+        font-size: 0.7rem;
+    }
+    *{
+        max-width: 900px;
     }
 }
