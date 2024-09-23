@@ -9,9 +9,84 @@
 .formulario{
     background-color: rgb(241, 241, 241);
     
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     margin: auto;
     margin-top: 5%;
 
     width: 25rem;
     height: 30rem;
 }
+.formulario button{
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5rem;
+    background-color: white;
+    border: none;
+    background-color: rgb(127, 255, 212);
+
+}
+.paginaNombres , .paginaEstados{
+    height: auto;
+    width: 20rem;
+    right: 37%;
+    text-align: center;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(175, 172, 172, 0.45) ;
+    
+}
+.paginaNombres button{
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.paginaEstados button{
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.fechaF{
+    width: 15rem;
+    padding: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: none;
+    background-color: aquamarine;
+}
+
+.nombreTarea{
+    width: 15rem;
+    margin: 0 auto 0;
+    margin-bottom: -1rem;
+
+}
+.titleTarea{
+    text-align: center;
+    margin-bottom: -2.5rem;
+    font-size: 1.1rem;
+    color: rgb(19, 218, 152);
+}
+.formularioTitle{
+    text-align: center;
+    color: rgb(19, 218, 152);
+}
+.formulario button:hover{
+    background-color: rgb(25, 216, 153);
+    zoom: 1.1;
+    box-shadow: 0px 0px 3px 0.5px black;
+
+}
+.fechaF:hover{
+    background-color: rgb(25, 216, 153);
+    zoom: 1.1;
+    box-shadow: 0px 0px 3px 0.5px black;
+
+}
+.nombreTarea:hover{
+    background-color: rgba(92, 209, 170, 0.342);
+
+}
+
