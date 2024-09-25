@@ -22,8 +22,16 @@ function tarea({ nombre, personas, fecha, estado }) {
     
     let estadoTarea = document.createElement('p');
     estadoTarea.className = "estado";
-    estadoTarea.textContent = `Estado:  ${estado}`;
+    estadoTarea.textContent = `  ${estado}`;
     itemTarea.appendChild(estadoTarea);
+
+    if (estado === 'incompleto') {
+        estadoTarea.classList.add('incompleto');
+    } else if (estado === 'completo') {
+        estadoTarea.classList.add('completado');
+    }else if(estado ==='en progreso'){
+        estadoTarea.classList.add('Enprogreso')
+    }
     
     return itemTarea;
 }

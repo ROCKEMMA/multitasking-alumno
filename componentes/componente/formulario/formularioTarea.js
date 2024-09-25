@@ -1,5 +1,6 @@
 import { icon1 } from "../../header/header.js";
 import { DOM } from "../../../main.js";
+import { usuarios } from "../../../data/dbUsuarios.js";
 
 // Función para crear el formulario de tarea
 function crearFormulario() {
@@ -51,8 +52,8 @@ function manejarEstados(formulario, ventanaTarea) {
         let ventanaEstados = document.createElement('div');
         ventanaEstados.className = 'paginaEstados';
 
-        let btnCompletado = crearBotonEstado('Completado');
-        let btnIncompleto = crearBotonEstado('Incompleto');
+        let btnCompletado = crearBotonEstado('Asignado');
+        let btnIncompleto = crearBotonEstado('Sin asignar');
         let btnAceptar = document.createElement('button');
         btnAceptar.textContent = 'Aceptar';
         btnAceptar.className = 'btn_aceptar';
@@ -74,8 +75,6 @@ function manejarEstados(formulario, ventanaTarea) {
         function crearBotonEstado(estado) {
             let boton = document.createElement('button');
             boton.textContent = estado;
-            boton.className = `btn_${estado.toLowerCase()}`;
-
             boton.addEventListener('click', () => {
                 estadoSeleccionado = estado;
             });
@@ -87,7 +86,7 @@ function manejarEstados(formulario, ventanaTarea) {
 
 // Función para manejar la ventana de selección de nombres
 function manejarNombres(formulario, ventanaNombres) {
-    let nombreSeleccionado = '';
+    let nombresSeleccionados = [];
 
     ventanaNombres.addEventListener('click', () => {
         // Verifica si la ventana ya existe
@@ -96,20 +95,22 @@ function manejarNombres(formulario, ventanaNombres) {
         let ventanaSeleccionNombres = document.createElement('div');
         ventanaSeleccionNombres.className = 'paginaNombres';
 
-        let btnNombre1 = crearBotonNombre('Nombre 1');
-        let btnNombre2 = crearBotonNombre('Nombre 2');
-        let btnNombre3 = crearBotonNombre('Nombre 3');
+        let btnNombre1 = crearBotonNombre(usuarios[0].nombre);
+        let btnNombre2 = crearBotonNombre(usuarios[1].nombre);
+        let btnNombre3 = crearBotonNombre(usuarios[3].nombre);
         let btnAceptarNombre = document.createElement('button');
         btnAceptarNombre.textContent = 'Aceptar';
         btnAceptarNombre.className = 'btn_aceptar';
 
         btnAceptarNombre.addEventListener('click', () => {
-            if (nombreSeleccionado) {
-                console.log(`Nombre seleccionado: ${nombreSeleccionado}`);
+            // Verificamos si se han seleccionado exactamente dos nombres
+            if (nombresSeleccionados.length === 2) {
+                console.log(`Nombres seleccionados: ${nombresSeleccionados}`);
             } else {
-                console.log('No se ha seleccionado ningún nombre.');
+                console.log('Debes seleccionar exactamente dos nombres.');
             }
-            formulario.removeChild(ventanaSeleccionNombres);  // Elimina la ventana
+            // Eliminamos la ventana
+            formulario.removeChild(ventanaSeleccionNombres);  
         });
 
         ventanaSeleccionNombres.appendChild(btnNombre1);
@@ -123,7 +124,15 @@ function manejarNombres(formulario, ventanaNombres) {
             boton.textContent = nombre;
 
             boton.addEventListener('click', () => {
-                nombreSeleccionado = nombre;
+                if (nombresSeleccionados.includes(nombre)) {
+                    // Si el nombre ya está seleccionado, lo deselecciona
+                    nombresSeleccionados = nombresSeleccionados.filter(n => n !== nombre);
+                    boton.classList.remove('seleccionado');  
+                } else if (nombresSeleccionados.length < 2) {
+                    // Solo permite seleccionar hasta 2 nombres
+                    nombresSeleccionados.push(nombre);
+                    boton.classList.add('seleccionado');  
+                }
             });
 
             return boton;
