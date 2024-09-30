@@ -1,99 +1,190 @@
 .contenedorTareas{
-
+    width: 100vw;
     height: 100%;
     font-family: cursive;
     padding-top: 2rem;
-    padding-bottom: 2rem;
 
-    border-bottom: 1px solid black;
     display: flex;
     flex-direction: column;
 }
 .itemTarea{
-    width: auto;
+    width: 80%;
     height: 3rem;
-    
+    padding: 2rem;
+    margin-right: auto;
+    margin-left: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
     align-content: center;
     text-align: center;
     align-items: center;
+    
+    margin-bottom: 1rem;
 
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    border-radius: 5rem;
+}
+.itemTarea:hover{
+    background-color: rgba(128, 128, 128, 0.247);
 }
 
 .contenedorTareas div:hover{
-    zoom: 1.1;
     cursor: pointer;
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.301);
+
 }
-.contenedorTareas > div:first-child{
-    border-top: 1px solid black;
+.itemTarea h3:hover{
+    text-decoration:underline red;
 }
 .estado{
-    width: 7.8rem;
-    margin-left: 5rem;
+    height: 3rem;
+    text-align: center;
+    align-content: center;
+    margin-left: 3rem;
     border-radius: 5rem;
-    background-color: rgb(10, 249, 154);
+    border: 1px solid black;
+    background-color: rgba(97, 97, 97, 0.196);
 
 }
 
+.seleccionado {
+    background-color: #4CAF50;  
+    color: white;              
+    border: 2px solid #2E7D32; 
+}
+.incompleto:hover{
+    background-color: rgba(255, 44, 44, 0.438);
+    color: red;
+}
+.completado:hover{
+    background-color: rgba(8, 233, 26, 0.244);
+    color: green;
+}
+.Enprogreso:hover{
+    background-color: rgba(255, 208, 0, 0.265);
+    color: orange;
+}
 @media (max-width: 376px) {
     .estado{
-        width: auto;
+        width: 5rem;
         height: 2rem;
 
+        grid-column-start: 4;
+        grid-column-end: 5;
         margin: 0%;
         align-content: center;
     }
     .Usuario{
-        padding-left: 1rem;
         text-align: center;        
-        width: 4rem;
-    }
-    .fecha{
-        width: 5rem;
-    }
-    .contenedorTareas :hover{
-        zoom: none;
-    }
-    .contenedorTareas h3{
-        font-size: 0.7rem;
-    }
-    .contenedorTareas p {
-        font-size: 0.6rem;
-    }
-    *{
-        max-width: 375px;
-    }
-}
-@media  (min-width: 376px )and (max-width: 480px) {
-    .estado{
         width: auto;
-        height: 2rem;
-
-        margin: 0%;
-        align-content: center;
-    }
-    .Usuario{
-        padding-left: 1rem;
-        text-align: center;        
-        width: 4rem;
     }
     .fecha{
-        width: 5rem;
+        width: auto;
+        grid-column-start: 2;
+        grid-column-end: 4;
     }
     .contenedorTareas :hover{
         zoom: none;
     }
     .contenedorTareas h3{
         font-size: 0.8rem;
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 5;
+
+    }
+    .contenedorTareas p {
+        font-size: 0.6rem;
+        grid-row: 2;
+    }
+    *{
+        max-width: 375px;
+    }
+    .itemTarea{
+        height: 5rem;
+        grid-template-rows: repeat(2 , 1fr);
+    }
+}
+@media  (min-width: 376px )and (max-width: 500px) {
+    .estado{
+        width: 5rem;
+        height: 2rem;
+
+        grid-column-start: 4;
+        grid-column-end: 5;
+        margin: 0%;
+        align-content: center;
+    }
+    .Usuario{
+        text-align: center;        
+        width: auto;
+    }
+    .fecha{
+        width: auto;
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    .contenedorTareas :hover{
+        zoom: none;
+    }
+    .contenedorTareas h3{
+        font-size: 0.9rem;
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 5;
+
     }
     .contenedorTareas p {
         font-size: 0.7rem;
+        grid-row: 2;
+    }
+    .itemTarea{
+        height: 5rem;
+        grid-template-rows: repeat(2 , 1fr);
     }
     *{
         max-width: 480px;
     }
+}
+@media  (min-width: 501px )and (max-width: 900px) {
+    .estado{
+        width: auto;
+        height: 2rem;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        margin: 0%;
+        align-content: center;
+    }
+    .Usuario{
+        text-align: center;        
+    }
+    .fecha{
+        width: auto;
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    .contenedorTareas :hover{
+        zoom: none;
+    }
+    .contenedorTareas h3{
+        font-size: 0.99rem;
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        padding-bottom: 1rem;
+    }
+    .contenedorTareas p {
+        font-size: 0.9rem;
+        width: auto;
+        grid-row: 2;
+
+    }
+    *{
+        max-width: 900px;
+    }
+    .itemTarea{
+        height: 6rem;
+        grid-template-rows: repeat(2 , 1fr);
+    }
+    
 }

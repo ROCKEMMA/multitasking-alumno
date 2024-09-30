@@ -4,3 +4,5 @@ let DOM=document.querySelector('#root')
 DOM.appendChild(headerComponent)
 DOM.appendChild(seccionTareas)
 
+
+export {DOM}

@@ -12,7 +12,7 @@ function tarea({ nombre, personas, fecha, estado }) {
     // Convertir personas a emojis y mostrarlos
     let usuariosTarea = document.createElement('p');
     usuariosTarea.className = "Usuario";
-    usuariosTarea.textContent = `Usuarios asignados: ${obtenerEmojis(personas).join(' ')}`; // Usar los emojis en lugar de IDs
+    usuariosTarea.textContent = `Usuarios asignados: ${obtenerEmojis(personas).join(' ')}`; 
     itemTarea.appendChild(usuariosTarea);
     
     let fechaTarea = document.createElement('p');
@@ -22,8 +22,16 @@ function tarea({ nombre, personas, fecha, estado }) {
     
     let estadoTarea = document.createElement('p');
     estadoTarea.className = "estado";
-    estadoTarea.textContent = `Estado:  ${estado}`;
+    estadoTarea.textContent = `  ${estado}`;
     itemTarea.appendChild(estadoTarea);
+
+    if (estado === 'incompleto') {
+        estadoTarea.classList.add('incompleto');
+    } else if (estado === 'completo') {
+        estadoTarea.classList.add('completado');
+    }else if(estado ==='en progreso'){
+        estadoTarea.classList.add('Enprogreso')
+    }
     
     return itemTarea;
 }
@@ -32,7 +40,7 @@ function tarea({ nombre, personas, fecha, estado }) {
 function obtenerEmojis(usuariosAsignados) {
     return usuariosAsignados.map(id => {
         const usuario = usuarios.find(e => e.id_usuario === id);
-        return usuario ? usuario.emoji : '❓'; // Si no encuentra el usuario, muestra un emoji de interrogación
+        return usuario ? usuario.emoji : '❓';
     });
 }
 
@@ -44,7 +52,7 @@ function agregarTareasAlContenedor(tareas) {
     tareas.forEach(tareaData => {
         const tareaComponente = tarea({
             nombre: tareaData.nombre,
-            personas: tareaData.usuarios_asignados, // Pasamos los IDs de los usuarios
+            personas: tareaData.usuarios_asignados, 
             fecha: tareaData.fecha_limite,
             estado: tareaData.estado
         });
@@ -55,7 +63,6 @@ function agregarTareasAlContenedor(tareas) {
     return contenedorTareas;
 }
 
-// Crear y agregar todas las tareas al contenedor
 const seccionTareas = agregarTareasAlContenedor(tareas);
 console.log(seccionTareas);
 

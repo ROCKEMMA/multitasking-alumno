@@ -44,4 +44,5 @@ headerComponent.appendChild(title);
 headerComponent.appendChild(searchContainer);
 headerComponent.appendChild(contenedor_icon_header);
 
+export{icon1}
 export{headerComponent}

@@ -73,13 +73,16 @@
     }
 
     .header{
-    grid-template-columns: auto;
+        width:auto;
+        grid-template-columns: auto;
         
     }
 
+
     .input_search{
-        width: 9rem;
+        width: 7rem;
     }
+
 }
 @media (min-width:376px) and (max-width: 480px) {
     .title{
@@ -90,5 +93,36 @@
     }
     .addtask{
         margin-top:2px ;
+    }
+    .input_search{
+        width: 7rem;
+    }
+}
+@media (min-width:480px) and (max-width: 720px) {
+    .title{
+        padding-left: 10px;
+    }
+    .header{
+        grid-template-columns: auto;
+    }
+    .addtask{
+        margin-top:2px ;
+    }
+    .input_search{
+        width: 7rem;
+    }
+}
+@media (min-width:481px) and (max-width: 900px) {
+    .title{
+        padding-left: 10px;
+    }
+    .header{
+        grid-template-columns: auto;
+    }
+    .addtask{
+        margin-top:2px ;
+    }
+    .input_search{
+        width: 10rem;
     }
 }
