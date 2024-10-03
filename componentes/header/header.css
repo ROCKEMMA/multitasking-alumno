@@ -56,11 +56,9 @@
 }
 .icon1 :hover{
     transition: 2ms;
-    zoom: 1.2;
 }
 .icon2 :hover{
     transition: 2ms;
-    zoom: 1.2;
 }
 .icon2{
     text-align: center;
