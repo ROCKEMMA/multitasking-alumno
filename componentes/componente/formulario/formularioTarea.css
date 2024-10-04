@@ -15,7 +15,7 @@
     justify-content: space-evenly;
     margin: auto;
 
-    width: 70vw;
+    width: 25rem;
     height: 100%;
 }
 .formulario button{
@@ -33,7 +33,7 @@
 .paginaNombres , .paginaEstados{
     position: fixed;
     height: auto;
-    width: 70vw;
+    width: 25rem;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -94,3 +94,9 @@
 
 }
 
+@media (max-width:500px) {
+    .formulario{
+    width: 70vw;
+    }
+    
+}
