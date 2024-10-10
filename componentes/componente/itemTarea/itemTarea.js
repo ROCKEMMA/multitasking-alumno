@@ -1,7 +1,8 @@
 import { tareas } from "../../../data/dbTareas.js";
 import { usuarios } from "../../../data/dbUsuarios.js";
 
-function tarea({ nombre, personas, fecha, estado }) {
+// Función para crear un componente de tarea
+function tarea({ nombre, personas, fecha, estado, id }) {
     let itemTarea = document.createElement('div');
     itemTarea.className = "itemTarea";
     
@@ -22,16 +23,30 @@ function tarea({ nombre, personas, fecha, estado }) {
     
     let estadoTarea = document.createElement('p');
     estadoTarea.className = "estado";
-    estadoTarea.textContent = `  ${estado}`;
+    estadoTarea.textContent = `Estado: ${estado}`;
     itemTarea.appendChild(estadoTarea);
 
+    // Agregar clase según el estado
     if (estado === 'incompleto') {
         estadoTarea.classList.add('incompleto');
     } else if (estado === 'completo') {
         estadoTarea.classList.add('completado');
-    }else if(estado ==='en progreso'){
-        estadoTarea.classList.add('Enprogreso')
+    } else if (estado === 'en progreso') {
+        estadoTarea.classList.add('Enprogreso');
     }
+
+    // Crear botón para eliminar la tarea
+    let botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'X';
+    botonEliminar.className = 'btnEliminar'; 
+    
+    // Lógica para eliminar la tarea del DOM
+    botonEliminar.addEventListener('click', (e) => {
+        itemTarea.remove();  
+        eliminarTarea(id);   
+    });
+
+    itemTarea.appendChild(botonEliminar);
     
     return itemTarea;
 }
@@ -45,7 +60,7 @@ function obtenerEmojis(usuariosAsignados) {
 }
 
 // Función para agregar tareas al contenedor
-function agregarTareasAlContenedor(tareas) {
+function agregarTareasAlContenedor(tareas, onDelete) {
     let contenedorTareas = document.createElement('section');
     contenedorTareas.className = "contenedorTareas";
 
@@ -54,16 +69,28 @@ function agregarTareasAlContenedor(tareas) {
             nombre: tareaData.nombre,
             personas: tareaData.usuarios_asignados, 
             fecha: tareaData.fecha_limite,
-            estado: tareaData.estado
+            estado: tareaData.estado,
+            id: tareaData.id  
         });
 
         contenedorTareas.appendChild(tareaComponente);
+        
     });
 
     return contenedorTareas;
 }
 
-const seccionTareas = agregarTareasAlContenedor(tareas);
-console.log(seccionTareas);
+// Función para eliminar tarea del localStorage
+function eliminarTarea(id) {
+    let tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
+    tareasGuardadas = tareasGuardadas.filter(tarea => tarea.id !== id); 
+    localStorage.setItem('tareas', JSON.stringify(tareasGuardadas));
+}
 
+// Inicializar sección de tareas
+const seccionTareas = agregarTareasAlContenedor(tareas);
+document.body.appendChild(seccionTareas); 
+
+// Exportar el componente de tareas
 export { seccionTareas };
+export { agregarTareasAlContenedor };

@@ -1,7 +1,9 @@
 #root{
     width: 100vw;
-    height: 100vh;
+    height: auto;
 
     display: grid ;
-    grid-template-rows: 64px auto 64px ;
+    grid-template-rows: 100px auto 64px ;
+}
+body{
 }
