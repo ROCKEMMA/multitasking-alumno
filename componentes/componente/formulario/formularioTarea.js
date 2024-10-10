@@ -1,6 +1,8 @@
 import { icon1 } from "../../header/header.js";
 import { DOM } from "../../../main.js";
 import { usuarios } from "../../../data/dbUsuarios.js";
+import { tareas } from "../../../data/dbTareas.js";
+import { agregarTareasAlContenedor } from "../itemTarea/itemTarea.js";
 
 // Función para crear el formulario de tarea
 function crearFormulario() {
@@ -17,10 +19,11 @@ function crearFormulario() {
 
     let entrada_tarea = document.createElement('input');
     entrada_tarea.className = 'nombreTarea';
+    entrada_tarea.placeholder = 'Nombre de la tarea';
 
     let calendario = document.createElement('input');
     calendario.type = 'date';
-    calendario.className='fechaF'
+    calendario.className = 'fechaF';
 
     let ventanaTarea = document.createElement('button');
     ventanaTarea.className = 'btn_estado';
@@ -30,58 +33,19 @@ function crearFormulario() {
     ventanaNombres.className = 'btn_nombres';
     ventanaNombres.textContent = 'Seleccionar Nombre';
 
+    let botonAceptar = document.createElement('button');
+    botonAceptar.textContent = 'Aceptar';
+    botonAceptar.className = 'btn_aceptar';
+
     formulario.appendChild(tituloFormulario);
     formulario.appendChild(IngreseTarea);
     formulario.appendChild(entrada_tarea);
     formulario.appendChild(calendario);
     formulario.appendChild(ventanaTarea);
     formulario.appendChild(ventanaNombres);
+    formulario.appendChild(botonAceptar);
 
-    // Devuelve el formulario, ventanaTarea y ventanaNombres
-    return { formulario, ventanaTarea, ventanaNombres };
-}
-
-// Función para manejar los estados de la tarea
-function manejarEstados(formulario, ventanaTarea) {
-    let estadoSeleccionado = '';
-
-    ventanaTarea.addEventListener('click', () => {
-        // Verifica si la ventana ya existe
-        if (document.querySelector('.paginaEstados')) return;
-
-        let ventanaEstados = document.createElement('div');
-        ventanaEstados.className = 'paginaEstados';
-
-        let btnCompletado = crearBotonEstado('Asignado');
-        let btnIncompleto = crearBotonEstado('Sin asignar');
-        let btnAceptar = document.createElement('button');
-        btnAceptar.textContent = 'Aceptar';
-        btnAceptar.className = 'btn_aceptar';
-
-        btnAceptar.addEventListener('click', () => {
-            if (estadoSeleccionado) {
-                console.log(`Estado final: ${estadoSeleccionado}`);
-            } else {
-                console.log('No se ha seleccionado ningún estado.');
-            }
-            formulario.removeChild(ventanaEstados);  
-        });
-
-        ventanaEstados.appendChild(btnCompletado);
-        ventanaEstados.appendChild(btnIncompleto);
-        ventanaEstados.appendChild(btnAceptar);
-        formulario.appendChild(ventanaEstados);
-
-        function crearBotonEstado(estado) {
-            let boton = document.createElement('button');
-            boton.textContent = estado;
-            boton.addEventListener('click', () => {
-                estadoSeleccionado = estado;
-            });
-
-            return boton;
-        }
-    });
+    return { formulario, ventanaTarea, ventanaNombres, entrada_tarea, calendario, botonAceptar };
 }
 
 // Función para manejar la ventana de selección de nombres
@@ -97,7 +61,7 @@ function manejarNombres(formulario, ventanaNombres) {
 
         let btnNombre1 = crearBotonNombre(usuarios[0].nombre);
         let btnNombre2 = crearBotonNombre(usuarios[1].nombre);
-        let btnNombre3 = crearBotonNombre(usuarios[3].nombre);
+        let btnNombre3 = crearBotonNombre(usuarios[2].nombre); // Asegúrate de que este índice sea correcto
         let btnAceptarNombre = document.createElement('button');
         btnAceptarNombre.textContent = 'Aceptar';
         btnAceptarNombre.className = 'btn_aceptar';
@@ -110,7 +74,7 @@ function manejarNombres(formulario, ventanaNombres) {
                 console.log('Debes seleccionar exactamente dos nombres.');
             }
             // Eliminamos la ventana
-            formulario.removeChild(ventanaSeleccionNombres);  
+            formulario.removeChild(ventanaSeleccionNombres);
         });
 
         ventanaSeleccionNombres.appendChild(btnNombre1);
@@ -127,12 +91,56 @@ function manejarNombres(formulario, ventanaNombres) {
                 if (nombresSeleccionados.includes(nombre)) {
                     // Si el nombre ya está seleccionado, lo deselecciona
                     nombresSeleccionados = nombresSeleccionados.filter(n => n !== nombre);
-                    boton.classList.remove('seleccionado');  
+                    boton.classList.remove('seleccionado');
                 } else if (nombresSeleccionados.length < 2) {
                     // Solo permite seleccionar hasta 2 nombres
                     nombresSeleccionados.push(nombre);
-                    boton.classList.add('seleccionado');  
+                    boton.classList.add('seleccionado');
                 }
+            });
+
+            return boton;
+        }
+    });
+}
+
+// Función para manejar los estados de la tarea
+function manejarEstados(formulario, ventanaTarea) {
+    let estadoSeleccionado = ''; 
+    ventanaTarea.addEventListener('click', () => {
+        // Verifica si la ventana de selección de estado ya existe
+        if (document.querySelector('.paginaEstados')) return;
+
+        let ventanaEstados = document.createElement('div');
+        ventanaEstados.className = 'paginaEstados';
+
+        let btnAsignado = crearBotonEstado('Asignado');
+        let btnSinAsignar = crearBotonEstado('Sin asignar');
+        let btnAceptar = document.createElement('button');
+        btnAceptar.textContent = 'Aceptar';
+        btnAceptar.className = 'btn_aceptar';
+
+        btnAceptar.addEventListener('click', () => {
+            if (estadoSeleccionado) {
+                console.log(`Estado final: ${estadoSeleccionado}`);
+            } else {
+                console.log('No se ha seleccionado ningún estado.');
+            }
+            formulario.removeChild(ventanaEstados);  
+        });
+
+        ventanaEstados.appendChild(btnAsignado);
+        ventanaEstados.appendChild(btnSinAsignar);
+        ventanaEstados.appendChild(btnAceptar);
+        formulario.appendChild(ventanaEstados);
+
+        function crearBotonEstado(estado) {
+            let boton = document.createElement('button');
+            boton.textContent = estado;
+
+            boton.addEventListener('click', () => {
+                estadoSeleccionado = estado; 
+                console.log(`Estado seleccionado: ${estadoSeleccionado}`);
             });
 
             return boton;
@@ -148,18 +156,66 @@ function inicializarFormulario() {
 
         background.addEventListener('click', (e) => {
             if (e.target === background) {
-                DOM.removeChild(background);  
+                DOM.removeChild(background);
             }
         });
 
-        let { formulario, ventanaTarea, ventanaNombres } = crearFormulario();
+        let { formulario, ventanaTarea, ventanaNombres, entrada_tarea, calendario, botonAceptar } = crearFormulario();
 
-        manejarEstados(formulario, ventanaTarea);
         manejarNombres(formulario, ventanaNombres);
+        manejarEstados(formulario, ventanaTarea);
 
         background.appendChild(formulario);
         DOM.appendChild(background);
+
+        // Al hacer clic en aceptar, guardamos la tarea en localStorage
+        botonAceptar.addEventListener('click', () => {
+            const nuevaTarea = {
+                nombre: entrada_tarea.value,
+                usuarios_asignados: obtenerUsuariosSeleccionados(),
+                fecha_limite: calendario.value,
+                estado: obtenerEstadoSeleccionado(), 
+                id: Date.now()
+            };
+
+            guardarTareaEnLocalStorage(nuevaTarea);
+
+            mostrarNuevaTarea(nuevaTarea);
+
+            DOM.removeChild(background);
+        });
     });
+}
+
+// Función para guardar la tarea en localStorage
+function guardarTareaEnLocalStorage(tarea) {
+    let tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
+    tareasGuardadas.push(tarea);
+    localStorage.setItem('tareas', JSON.stringify(tareasGuardadas));
+}
+
+// Función para mostrar la nueva tarea en la sección de tareas
+function mostrarNuevaTarea(tarea) {
+    let seccionTareas = document.querySelector('.contenedorTareas');
+    if (!seccionTareas) {
+        console.error('Contenedor de tareas no encontrado');
+        return;
+    }
+
+    // Usar la función que ya tienes para crear la tarea en el DOM
+    const nuevaTareaElemento = agregarTareasAlContenedor([tarea]);
+    seccionTareas.appendChild(nuevaTareaElemento);
+}
+
+// Función para obtener los usuarios seleccionados
+function obtenerUsuariosSeleccionados() {
+    return [1, 2];
+}
+
+// Función para obtener el estado seleccionado
+function obtenerEstadoSeleccionado() {
+    let estado = document.querySelector('.btn_estado').textContent;
+    return estado || 'Sin asignar';
 }
 
 inicializarFormulario();
