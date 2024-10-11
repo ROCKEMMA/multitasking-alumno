@@ -88,4 +88,4 @@ Mantener el fork actualizado
 # Esquema 
 link de excalidraw: https://excalidraw.com/#json=XIBe2WIx5Uo7vUiWwqwuE,lnfCPDIcpdG9mSclbXEuQQ
 
-![Esquema](https://github.com/user-attachments/assets/d48c7598-b76e-4c2e-9f4f-5db329d66a31)
+![Esquema](https://github.com/user-attachments/assets/017df69e-e12e-4d98-a5dd-8d564b46182c)

@@ -1,7 +1,6 @@
 import { tareas } from "../../../data/dbTareas.js";
 import { usuarios } from "../../../data/dbUsuarios.js";
 
-// Función para crear un componente de tarea
 function tarea({ nombre, personas, fecha, estado, id }) {
     let itemTarea = document.createElement('div');
     itemTarea.className = "itemTarea";
@@ -10,7 +9,6 @@ function tarea({ nombre, personas, fecha, estado, id }) {
     nombreTarea.textContent = nombre;
     itemTarea.appendChild(nombreTarea);
     
-    // Convertir personas a emojis y mostrarlos
     let usuariosTarea = document.createElement('p');
     usuariosTarea.className = "Usuario";
     usuariosTarea.textContent = `Usuarios asignados: ${obtenerEmojis(personas).join(' ')}`; 
@@ -26,21 +24,19 @@ function tarea({ nombre, personas, fecha, estado, id }) {
     estadoTarea.textContent = `Estado: ${estado}`;
     itemTarea.appendChild(estadoTarea);
 
-    // Agregar clase según el estado
-    if (estado === 'incompleto') {
-        estadoTarea.classList.add('incompleto');
-    } else if (estado === 'completo') {
-        estadoTarea.classList.add('completado');
-    } else if (estado === 'en progreso') {
-        estadoTarea.classList.add('Enprogreso');
-    }
+    actualizarClaseEstado(estadoTarea, estado);
 
-    // Crear botón para eliminar la tarea
+    estadoTarea.addEventListener('click', () => {
+        estado = cambiarEstado(estado);
+        estadoTarea.textContent = `Estado: ${estado}`;
+        actualizarClaseEstado(estadoTarea, estado);
+        actualizarTareaEnLocalStorage(id, estado);
+    });
+
     let botonEliminar = document.createElement('button');
     botonEliminar.textContent = 'X';
     botonEliminar.className = 'btnEliminar'; 
     
-    // Lógica para eliminar la tarea del DOM
     botonEliminar.addEventListener('click', (e) => {
         itemTarea.remove();  
         eliminarTarea(id);   
@@ -51,7 +47,6 @@ function tarea({ nombre, personas, fecha, estado, id }) {
     return itemTarea;
 }
 
-// Función para obtener emojis de usuarios asignados
 function obtenerEmojis(usuariosAsignados) {
     return usuariosAsignados.map(id => {
         const usuario = usuarios.find(e => e.id_usuario === id);
@@ -59,8 +54,7 @@ function obtenerEmojis(usuariosAsignados) {
     });
 }
 
-// Función para agregar tareas al contenedor
-function agregarTareasAlContenedor(tareas, onDelete) {
+function agregarTareasAlContenedor(tareas) {
     let contenedorTareas = document.createElement('section');
     contenedorTareas.className = "contenedorTareas";
 
@@ -73,24 +67,58 @@ function agregarTareasAlContenedor(tareas, onDelete) {
             id: tareaData.id  
         });
 
-        contenedorTareas.appendChild(tareaComponente);
-        
+        contenedorTareas.appendChild(tareaComponente);  
     });
 
     return contenedorTareas;
 }
 
-// Función para eliminar tarea del localStorage
 function eliminarTarea(id) {
     let tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
     tareasGuardadas = tareasGuardadas.filter(tarea => tarea.id !== id); 
     localStorage.setItem('tareas', JSON.stringify(tareasGuardadas));
 }
 
-// Inicializar sección de tareas
-const seccionTareas = agregarTareasAlContenedor(tareas);
+function actualizarTareaEnLocalStorage(id, nuevoEstado) {
+    let tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
+    let tareaIndex = tareasGuardadas.findIndex(tarea => tarea.id === id);
+    if (tareaIndex !== -1) {
+        tareasGuardadas[tareaIndex].estado = nuevoEstado;
+        localStorage.setItem('tareas', JSON.stringify(tareasGuardadas));
+    }
+}
+
+function cambiarEstado(estadoActual) {
+    switch (estadoActual) {
+        case 'incompleto':
+            return 'completo';
+        case 'completo':
+            return 'en progreso';
+        case 'en progreso':
+            return 'incompleto';
+        default:
+            return 'incompleto';
+    }
+}
+
+function actualizarClaseEstado(elemento, estado) {
+    elemento.className = "estado";
+    if (estado === 'incompleto') {
+        elemento.classList.add('incompleto');
+    } else if (estado === 'completo') {
+        elemento.classList.add('completado');
+    } else if (estado === 'en progreso') {
+        elemento.classList.add('Enprogreso');
+    }
+}
+
+function inicializarSeccionTareas() {
+    const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
+    return agregarTareasAlContenedor(tareasGuardadas);
+}
+
+const seccionTareas = inicializarSeccionTareas();
 document.body.appendChild(seccionTareas); 
 
-// Exportar el componente de tareas
 export { seccionTareas };
 export { agregarTareasAlContenedor };

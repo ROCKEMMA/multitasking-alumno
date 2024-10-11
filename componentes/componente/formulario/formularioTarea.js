@@ -61,7 +61,7 @@ function manejarNombres(formulario, ventanaNombres) {
 
         let btnNombre1 = crearBotonNombre(usuarios[0].nombre);
         let btnNombre2 = crearBotonNombre(usuarios[1].nombre);
-        let btnNombre3 = crearBotonNombre(usuarios[2].nombre); // Asegúrate de que este índice sea correcto
+        let btnNombre3 = crearBotonNombre(usuarios[2].nombre); 
         let btnAceptarNombre = document.createElement('button');
         btnAceptarNombre.textContent = 'Aceptar';
         btnAceptarNombre.className = 'btn_aceptar';
@@ -73,7 +73,6 @@ function manejarNombres(formulario, ventanaNombres) {
             } else {
                 console.log('Debes seleccionar exactamente dos nombres.');
             }
-            // Eliminamos la ventana
             formulario.removeChild(ventanaSeleccionNombres);
         });
 

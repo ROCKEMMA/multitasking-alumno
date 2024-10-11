@@ -80,19 +80,25 @@
         width: 5rem;
         height: 2rem;
 
-        grid-column-start: 4;
-        grid-column-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
         margin: 0%;
         align-content: center;
+    }
+    .btnEliminar{
+        width: 1rem;
+        grid-column: 1;
+        grid-row: 2;
     }
     .Usuario{
         text-align: center;        
         width: auto;
+        grid-column: 2;
     }
     .fecha{
         width: auto;
-        grid-column-start: 2;
-        grid-column-end: 4;
+        grid-column-start: 3;
+        grid-column-end: 5;
     }
     .contenedorTareas :hover{
         zoom: none;
@@ -101,7 +107,7 @@
         font-size: 0.8rem;
         grid-row: 1;
         grid-column-start: 1;
-        grid-column-end: 5;
+        grid-column-end: 6;
 
     }
     .contenedorTareas p {
@@ -113,6 +119,7 @@
     }
     .itemTarea{
         height: 5rem;
+        width: 90vw;
         grid-template-rows: repeat(2 , 1fr);
     }
 }
@@ -120,9 +127,8 @@
     .estado{
         width: 5rem;
         height: 2rem;
-
-        grid-column-start: 4;
-        grid-column-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
         margin: 0%;
         align-content: center;
     }
@@ -142,7 +148,7 @@
         font-size: 0.9rem;
         grid-row: 1;
         grid-column-start: 1;
-        grid-column-end: 5;
+        grid-column-end: 6;
 
     }
     .contenedorTareas p {
@@ -151,21 +157,20 @@
     }
     .itemTarea{
         height: 5rem;
+        width: 90vw;
         grid-template-rows: repeat(2 , 1fr);
+    }
+    .btnEliminar{
+        width: 1rem;
+        grid-column: 1;
+        grid-row: 2;
     }
     *{
         max-width: 480px;
     }
 }
 @media  (min-width: 501px )and (max-width: 900px) {
-    .estado{
-        width: auto;
-        height: 2rem;
-        grid-column-start: 4;
-        grid-column-end: 5;
-        margin: 0%;
-        align-content: center;
-    }
+
     .Usuario{
         text-align: center;        
     }
@@ -181,8 +186,8 @@
         font-size: 0.99rem;
         grid-row: 1;
         grid-column-start: 1;
-        grid-column-end: 5;
-        padding-bottom: 1rem;
+        grid-column-end: 6;
+        padding-bottom: 0.5rem;
     }
     .contenedorTareas p {
         font-size: 0.9rem;
@@ -190,11 +195,25 @@
         grid-row: 2;
 
     }
+    .estado{
+        width: auto;
+        height: auto;
+        grid-column-start: 5;
+        grid-column-end: 6;
+        margin: 0%;
+        align-content: center;
+    }
+    .btnEliminar{
+        width: 1rem;
+        grid-column: 1;
+        grid-row: 2;
+    }
     *{
         max-width: 900px;
     }
     .itemTarea{
         height: 6rem;
+        width: 90vw;
         grid-template-rows: repeat(2 , 1fr);
     }
     
