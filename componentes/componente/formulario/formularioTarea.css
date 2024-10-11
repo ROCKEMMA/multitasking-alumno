@@ -29,6 +29,10 @@
 
 
 }
+button.seleccionado {
+    color: rgb(160, 160, 160);
+    background-color: rgb(241, 233, 233);
+}
 .paginaNombres , .paginaEstados{
     position: fixed;
     height: auto;
