@@ -11,7 +11,7 @@ icono_header.innerHTML = `
 
 let title= document.createElement('div');  
 title.className = 'title'; 
-title.innerText="Multitasking"
+title.innerText = "Multitasking";
 
 let searchContainer = document.createElement('div');
 searchContainer.className = 'search';
@@ -36,6 +36,33 @@ icon2.innerHTML = `
   </svg>
 `;
 
+let downloadButton = document.createElement('button');
+downloadButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>`
+downloadButton.className = "download-btn";
+
+downloadButton.addEventListener('click', () => {
+  let seccionTareas = document.querySelector('.contenedorTareas');
+  if (seccionTareas) {
+    html2canvas(seccionTareas).then((canvas) => {
+      let link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'tareas.png';
+      
+      link.click();
+    }).catch((error) => {
+      console.error('Error capturando la imagen con html2canvas:', error);
+      alert("Ocurrió un error al intentar descargar la imagen.");
+    });
+  } else {
+    alert("No se encontró la sección de tareas.");
+  }
+});
+
+// Agrega el botón de descarga al header
+headerComponent.appendChild(downloadButton);
+
+export { downloadButton };
+
 contenedor_icon_header.appendChild(icon1);
 contenedor_icon_header.appendChild(icon2);
 
@@ -44,5 +71,4 @@ headerComponent.appendChild(title);
 headerComponent.appendChild(searchContainer);
 headerComponent.appendChild(contenedor_icon_header);
 
-export{icon1}
-export{headerComponent}
+export { icon1, headerComponent };

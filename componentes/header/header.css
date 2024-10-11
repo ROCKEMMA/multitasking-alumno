@@ -9,6 +9,14 @@
 
     align-items: center;
 }
+.download-btn{
+    grid-column: 6;
+    grid-row: 1;
+    margin-right: 1rem;
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+
+}
 
 .icono_header{
     grid-column: 1;
@@ -42,6 +50,7 @@
 }
 .contenedor_icon_header{
     grid-column: 5;
+    grid-row: 1;
     display: grid;
     grid-template-columns: repeat(2 , 1fr );
 }
